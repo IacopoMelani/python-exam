@@ -143,14 +143,18 @@ class Auction:
 
     def add_offer(self, offer):
         if not self.open:
-            raise Exception("Asta chiusa")
+            return
+            # raise Exception("Asta chiusa")
         if len(self.offers) == 0 or self.offers[0].amount < offer.amount:
             self.offers.insert(0, offer)
         else:
             self.offers.append(offer)
 
     def get_highest_offer(self):
-        return self.offers[0] if len(self.offers) > 0 else None
+        if len(self.offers) > 0:
+            return self.offers[0]
+        else:
+            return None
 
     def end_auction(self):
         self.open = False
@@ -169,22 +173,20 @@ def exercise_6():
 
     highest_offer = auction.get_highest_offer()
     if highest_offer:
-        print(highest_offer.name)
-        print(highest_offer.amount)
-
-    auction.add_offer(offer3)
+        print(highest_offer.name, highest_offer.amount)
 
     winning_offer = auction.end_auction()
 
+    auction.add_offer(offer3)
+
     if winning_offer:
-        print(winning_offer.name)
-        print(winning_offer.amount)
+        print(winning_offer.name, winning_offer.amount)
 
 
 # exercise_1()
 # exercise_2()
 # exercise_3()
 # exercise_4()
-exercise_5()
-# exercise_6()
+# exercise_5()
+exercise_6()
 
