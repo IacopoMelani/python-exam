@@ -114,16 +114,18 @@ def exercise_4():
 
 
 def prodotto_matrice_vettore(matrix=[], vec=[]):
-    for row in matrix:
+    result = []
+    for index_matrix, row in enumerate(matrix):
+        result.append(0)
         for index, v in enumerate(vec):
-            if len(row) >= len(vec):
-                row[index] = row[index] * v
-    return matrix
+            if len(row) -1 >= index:
+                result[index_matrix] += row[index] * v
+    return result
 
 
 def exercise_5():
-    matrix = [[1, 2, 3, 5], [3, 4, 10]]
-    vec = [1, 2, 100, 3]
+    matrix = [[1, 2], [3, 4]]
+    vec = [1, 2, 4, 5]
     matrix = prodotto_matrice_vettore(matrix, vec)
     print(matrix)
 
@@ -183,6 +185,6 @@ def exercise_6():
 # exercise_2()
 # exercise_3()
 # exercise_4()
-# exercise_5()
-exercise_6()
+exercise_5()
+# exercise_6()
 
